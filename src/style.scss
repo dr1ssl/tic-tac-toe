@@ -1,0 +1,338 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+ }
+ *,*::before,*::after{
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+ }
+ :focus, :active{outline: none;}
+ a:focus,a:active{outline: none;}
+ nav,footer,header,aside{display: block;}
+ a{color: #fff;}
+ button{color: #fff;}
+ 
+ html,body{
+    height: 100%; color: #ffffff; font-family: Poppins; background-color:#221f32; width: 100%; font-size: 20px; line-height: 1; font-size: 16px; -ms-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+ input,button,textarea{font-family: inherit;}
+ input::-ms-clear{display: none;}
+ button{cursor: pointer;}
+ button::-moz-focus-inner{padding: 0;border: 0;}
+ a, a:visited{text-decoration: none;}
+ a:hover{text-decoration: none;}
+ ul li{list-style: none;}
+ img{vertical-align: top;}
+    
+ h1,h2,h3,h4,h5,h6{font-size: inherit; font-weight: 400;}
+ 
+ .wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+ }
+ 
+ .__container{
+    max-width: 77.75rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+ }
+ 
+ /*================================================================================================================*/
+
+:root {
+    --page-bg: #252526;
+    --cell-color: #393939;
+    --present-board-color: #383838;
+    --cell-border: 1px solid #fff;
+    --choose-color: #fff;
+    --button-classic: #5e2079;
+  }
+  .light-mode {
+    --page-bg: #fff;
+    --present-board-color: #b9b9b9;
+    --cell-border: 1px solid #909090;
+    --choose-color: #383838;
+    --button-classic: #8730ad;
+    --cell-color: #ffffff;
+  }
+  
+  body {
+    background-color: var(--page-bg);
+    font-family: 'Prompt', sans-serif;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 70px;
+    margin-top: 20px;
+  }
+
+ .cell {
+    width: 100px;
+    height: 100px;
+    border: var(--cell-border);
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cell-color);
+    cursor: pointer;
+  }
+  .cell:hover {
+    background-color: rgba(231, 231, 255, 0.2);
+  }
+  .cell:first-child,
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  .cell:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  .cell:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  .cell:last-child,
+  .cell:nth-child(8),
+  .cell:nth-child(7) {
+    border-bottom: none;
+  }
+  .o {
+    background-color: rgb(131, 131, 238);
+  }
+  .x {
+    background-color: pink;
+  }
+
+// =================================================
+  
+
+.result-module{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(40, 40, 40, 0.917);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.result {
+  color: #9120f4;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+/* Dark mode btn */
+
+.dark-mode-btn {
+  order: 9;
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  width: 51px;
+  height: 26px;
+  padding: 5px;
+
+  border-radius: 50px;
+  border: 0.2px solid #8d8d8d;
+  background-color: #474747;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  transition: all 0.2s ease-in;
+}
+
+.dark-mode-btn::before {
+  content: "";
+
+  position: absolute;
+  top: 1px;
+  left: 1px;
+
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  background-color: #fff;
+  transition: left 0.2s ease-in;
+}
+.dark-mode-btn--active::before {
+  left: 26px;
+}
+
+.dark-mode-btn__icon {
+  position: relative;
+  z-index: 9;
+}
+//   ==========================================
+
+.game{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+  .chose-game {
+    display: flex;
+    background-color: var(--present-board-color);
+    border-radius: 25px;
+    padding: 40px 80px;
+    gap: 100px;
+    margin-top: 100px;
+  }
+  .game-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  .game-item img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  .game-item p {
+    font-size: 23px;
+    color: var(--choose-color);
+    letter-spacing: 2px;
+  }
+  .reset{
+    max-width: 200px;
+  }
+
+
+  /* =========BUTTONS======================= */
+.button-classic {
+    padding: 10px 20px;
+    background-color: #9120f4;
+    font-size: 18px;
+    color: var(--button-color);
+    letter-spacing: 1px;
+    border-bottom: 5px solid var(--button-classic);
+    border-right: 5px solid var(--button-classic);
+    transition: all 0.3s ease-in;
+  }
+  .button-classic:hover {
+    background-color: #ab4efd;
+    transform: translate(0px, 5px);
+  }
+
+  .back{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .not-allow {
+    pointer-events: none;
+  }
+
+
+  @media (max-width: 727px){
+    .game-item img{
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .game-item p{
+      font-size: 20px;
+    }
+    .button-classic {
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .chose-game {
+      padding: 20px 60px;
+      gap: 80px;
+    }
+  }
+
+  @media (max-width: 620px){
+    .game-item p{
+      font-size: 18px;
+    }
+    .chose-game {
+      padding: 15px 50px;
+      gap: 70px;
+    }
+  }
+
+  @media (max-width: 555px){
+    .game-item p{
+      font-size: 16px;
+    }
+    .chose-game {
+      padding: 10px 40px;
+      gap: 60px;
+    }
+  }
+
+  @media (max-width: 495px){
+    .game-item p{
+      font-size: 15px;
+    }
+    .chose-game {
+      padding: 10px 30px;
+      gap: 50px;
+    }
+  }
+
+  @media (max-width: 447px){
+    .game-item p{
+      font-size: 13px;
+    }
+    .chose-game {
+      padding: 30px 20px;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 387px){
+    .game-item img{
+      width: 70px;
+      height: 70px;
+      margin-bottom: 3px;
+    }
+    .game-item p{
+      font-size: 13px;
+    }
+    .chose-game {
+      padding: 20px 10px;
+      gap: 20px;
+    }
+    .button-classic {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    .result{
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: 347px){
+    .game-item p{
+      font-size: 12px;
+    }
+    .chose-game {
+      padding: 20px 5px;
+      gap: 10px;
+    }
+    .cell {
+      width: 85px;
+      height: 85px;
+    }
+  }
